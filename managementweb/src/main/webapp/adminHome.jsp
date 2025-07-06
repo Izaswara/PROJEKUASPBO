@@ -1,17 +1,17 @@
 <%@include file="header.html"%>
 <!DOCTYPE html>
 <html>
-<title>DGI</title>
+<title>STT Wastukancana</title>
 <body>
 <img src="logo.png"  align="left"width="100" height="100">
-<center><img src="dgi.png" width="100" height="100">
-<img src="apj sir.png" align="right"  width="100" height="100"></center>
+<center><img src="LogoStt.png" width="100" height="100">
+<img src="KetuaStt.png" align="right"  width="100" height="100"></center>
 <div class="w3-container">
   <div class="w3-bar w3-black">
-    <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'London')">Add New Student</button>
-    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Paris')">Insert New Result</button>
-    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo')">Registered Students</button>
-     <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo1')">All Student Result</button>
+    <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'London')">Tambahkan Mahasiswa Baru</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Paris')">Masukkan Hasil Baru</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo')">Mahasiswa Terdaftar</button>
+     <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo1')">Hasil Semua Mahasiswa</button>
      <a href="adminLogin.html" class="w3-bar-item w3-button tablink">Logout</a>
   </div>
   
@@ -46,7 +46,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Add New Students</div>
+                        <div class="card-header">Tambahkan Mahasiswa Baru</div>
                         <div class="card-body">
                             <form name="my-form" onsubmit="return validform()" action="addNewStudent.jsp" method="post">
                                 <div class="form-group row">
@@ -93,7 +93,7 @@
 
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                        Save
+                                        Simpan
                                         </button>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Insert New Result</div>
+                        <div class="card-header">Masukkan Hasil Baru</div>
                         <div class="card-body">
                             <form name="my-form" onsubmit="return validform()" action="insertNewResult.jsp" method="post">
                                 <div class="form-group row">
@@ -157,49 +157,49 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Fisika</label>
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Pemrograman Web</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s1">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Kimia</label>
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Statistika</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s2">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Matematika</label>
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Basis Data</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s3">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Pemrograman</label>
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Logika Matematika</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s4">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">B.Indonesia</label>
+                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Bahasa Inggris</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s5">
                                     </div>
                                 </div>
                                 
                                  <div class="form-group row">
-                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">B.Inggris</label>
+                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Kewarganegaraan</label>
                                     <div class="col-md-6">
                                         <input type="text"  class="form-control" name="s6">
                                     </div>
                                 </div>
                                 
                                  <div class="form-group row">
-                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Algoritma</label>
+                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Jaringan Komputer</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="s7">
                                     </div>
@@ -207,7 +207,7 @@
                                 
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                       Save
+                                       Simpan
                                         </button>
                                     </div>
                                 </div>
@@ -286,13 +286,13 @@
       <thead>
         <tr>
           <th>NIM</th>
-          <th>Fisika</th>
-          <th>Kimia</th>
-          <th>Matematika</th>
-          <th>Pemrograman</th>
-          <th>B.Indonesia</th>
-          <th>B.Inggris</th>
-          <th>Algoritma</th>
+          <th>Pemrograman Web</th>
+          <th>Statistika</th>
+          <th>Basis Data</th>
+          <th>Logika Matematika</th>
+          <th>Bahasa Inggris</th>
+          <th>Kewarganegaraan</th>
+          <th>Jaringan Komputer</th>
         </tr>
       </thead>
     </table>
@@ -335,7 +335,7 @@
   <center><h5>Note: Any errors occur then contact BTech Days.
 Designed & Developed by BTech Days Team</h5></center>
   <hr class="new1">
-<center><h5>All Right Reserved @ BTech Days :: 2015-2020</h5></center> 
+<center><h5>All Right Reserved Kelompok- :: 2025-2026</h5></center> 
   <hr class="new1">
 <br>
 </body>
