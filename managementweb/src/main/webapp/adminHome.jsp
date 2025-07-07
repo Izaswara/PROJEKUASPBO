@@ -51,6 +51,15 @@
                   <div class="card">
                     <div class="card-header">Tambahkan Mahasiswa Baru</div>
                     <div class="card-body">
+                      <% if (request.getParameter("error") !=null) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert">
+                          <%= request.getParameter("error") %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <% } %>
+
                       <form name="my-form" onsubmit="return validform()" action="addNewStudent.jsp" method="post">
                         <!-- Jenjang Dropdown -->
                         <div class="form-group row">
@@ -83,30 +92,28 @@
                           </div>
                         </div>
                       
-                        <!-- NIM -->
-                        <div class="form-group row">
-                          <label for="nim" class="col-md-4 col-form-label text-md-right">NIM</label>
-                          <div class="col-md-6">
-                            <input type="text" class="form-control" name="nim" required>
-                          </div>
+                      <!-- NIM -->
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">NIM</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control" name="nim" id="nim" required>
                         </div>
+                      </div>
                       
-                        <!-- Nama -->
-                        <div class="form-group row">
-                          <label for="nama" class="col-md-4 col-form-label text-md-right">Nama</label>
-                          <div class="col-md-6">
-                            <input type="text" class="form-control" name="nama" required>
-                          </div>
+                      <!-- Nama -->
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">Nama</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control" name="nama" id="nama" required>
                         </div>
-                      
-                        <!-- Nama Ayah -->
-                        <div class="form-group row">
-                          <label for="namaAyah" class="col-md-4 col-form-label text-md-right">Nama Ayah</label>
-                          <div class="col-md-6">
-                            <input type="text" class="form-control" name="namaAyah" required>
-                          </div>
+                      </div>
+                      <!-- Nama Ayah -->
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">Nama Ayah</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control" name="namaAyah" id="namaAyah" required>
                         </div>
-                      
+                      </div>
                         <!-- Jenis Kelamin Dropdown -->
                         <div class="form-group row">
                           <label for="gender" class="col-md-4 col-form-label text-md-right">Jenis Kelamin</label>
@@ -118,12 +125,51 @@
                             </select>
                           </div>
                         </div>
-                      
-                        <!-- Submit -->
-                        <div class="col-md-6 offset-md-4">
-                          <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
+                    
+                        
+                            <div class="col-md-6 offset-md-4 mt-3">
+                              <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
                       </form>
+<script>
+  function validateForm() {
+    const nim = document.getElementById("nim").value.trim();
+    const nama = document.getElementById("nama").value.trim();
+    const namaAyah = document.getElementById("namaAyah").value.trim();
+
+    const onlyDigits = /^\d+$/;
+    const onlyLetters = /^[a-zA-Z\s]+$/;
+
+    if (!onlyDigits.test(nim)) {
+      alert("NIM harus berupa angka!");
+      return false;
+    }
+
+    if (!onlyLetters.test(nama)) {
+      alert("Nama hanya boleh huruf!");
+      return false;
+    }
+
+    if (!onlyLetters.test(namaAyah)) {
+      alert("Nama Ayah hanya boleh huruf!");
+      return false;
+    }
+
+    return true;
+  }
+</script>
+<script>
+  // Menghilangkan alert setelah 4 detik
+  window.onload = function () {
+    const alertBox = document.getElementById("errorAlert");
+    if (alertBox) {
+      setTimeout(() => {
+        alertBox.classList.remove("show");
+        alertBox.classList.add("fade");
+      }, 4000); // 4 detik
+    }
+  };
+</script>
 
                   </div>
                 </div>
