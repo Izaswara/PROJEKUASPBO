@@ -249,6 +249,7 @@
               <th>Nama</th>
               <th>Nama Ayah</th>
               <th>Jenis Kelamin</th>
+              <th>Aksi</th>
             </tr>
           </thead>
         </table>
@@ -279,7 +280,81 @@
                     <td>
                       <%=rs.getString(6) %>
                     </td>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-toggle="modal"
+                        data-target="#editStudentModal<%=rs.getString(3)%>">Edit</button>
+                      <button class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteStudentModal<%=rs.getString(3)%>">Delete</button>
+                    </td>
                   </tr>
+                  <!-- Modal Edit Mahasiswa -->
+                  <div class="modal fade" id="editStudentModal<%=rs.getString(3)%>" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <form action="updateStudent.jsp" method="post">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Edit Data Mahasiswa</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                              <span>&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <input type="hidden" name="nim" value="<%=rs.getString(3)%>">
+                            <div class="form-group">
+                              <label>Jenjang</label>
+                              <input type="text" class="form-control" name="jenjang" value="<%=rs.getString(1)%>">
+                            </div>
+                            <div class="form-group">
+                              <label>Jurusan</label>
+                              <input type="text" class="form-control" name="jurusan" value="<%=rs.getString(2)%>">
+                            </div>
+                            <div class="form-group">
+                              <label>Nama</label>
+                              <input type="text" class="form-control" name="nama" value="<%=rs.getString(4)%>">
+                            </div>
+                            <div class="form-group">
+                              <label>Nama Ayah</label>
+                              <input type="text" class="form-control" name="namaAyah" value="<%=rs.getString(5)%>">
+                            </div>
+                            <div class="form-group">
+                              <label>Jenis Kelamin</label>
+                              <input type="text" class="form-control" name="gender" value="<%=rs.getString(6)%>">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  
+                  <!-- Modal Delete Mahasiswa -->
+                  <div class="modal fade" id="deleteStudentModal<%=rs.getString(3)%>" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <form action="deleteStudent.jsp" method="post">
+                        <input type="hidden" name="nim" value="<%=rs.getString(3)%>">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Hapus Data</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                              <span>&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Apakah kamu yakin ingin menghapus data mahasiswa dengan NIM <strong>
+                                <%=rs.getString(3)%>
+                              </strong>?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
           </tbody>
           <% }} catch(Exception e){ } %>
         </table>
