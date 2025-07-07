@@ -335,7 +335,7 @@
   <center><h5>Note: Any errors occur then contact BTech Days.
 Designed & Developed by BTech Days Team</h5></center>
   <hr class="new1">
-<center><h5>All Right Reserved Kelompok- :: 2025-2026</h5></center> 
+<center><h5>All Right Reserved Kelompok-1 :: 2025-2026</h5></center> 
   <hr class="new1">
 <br>
 </body>
