@@ -108,11 +108,6 @@
             </div>
       </div>
       </main>
-
-      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
-
   </body>
   </div>
 
@@ -366,10 +361,13 @@
                           </div>
                           <div class="modal-body">
                             <input type="hidden" name="nim" value="<%=rs.getString(1)%>">
-                            <% for(int i=2; i <=8; i++) { %>
+                            <% String[] labelMapel={ "Pemrograman Web" , "Statistika" , "Basis Data" , "Logika Matematika" , "Bahasa Inggris"
+                              , "Kewarganegaraan" , "Jaringan Komputer" }; for (int i=2; i <=8; i++) { %>
                               <div class="form-group">
-                                <label>Nilai S<%=i - 1%></label>
-                                <input type="text" class="form-control" name="s<%=i - 1%>" value="<%=rs.getString(i)%>">
+                                <label>
+                                  <%= labelMapel[i - 2] %>
+                                </label>
+                                <input type="text" class="form-control" name="s<%= i - 1 %>" value="<%= rs.getString(i) %>">
                               </div>
                               <% } %>
                           </div>
