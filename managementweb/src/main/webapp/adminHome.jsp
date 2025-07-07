@@ -60,7 +60,7 @@
                               </button>
                           </div>
                           <% } %>
-                      <form name="my-form" onsubmit="return validateForm()" action="addNewStudent.jsp" method="post">
+                      <form name="my-form" action="addNewStudent.jsp" method="post">
                         <!-- Jenjang Dropdown -->
                         <div class="form-group row">
                           <label for="jenjang" class="col-md-4 col-form-label text-md-right">Jenjang</label>
@@ -129,28 +129,6 @@
                               <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                       </form>
-<script>
-  function validateForm() {
-    const nim = document.getElementById("nim").value.trim();
-    const nama = document.getElementById("nama").value.trim();
-    const namaAyah = document.getElementById("namaAyah").value.trim();
-    const onlyDigits = /^\d+$/;
-    const onlyLetters = /^[a-zA-Z\s]+$/;
-    if (!onlyDigits.test(nim)) {
-      alert("NIM harus berupa angka!");
-      return false;
-    }
-    if (!onlyLetters.test(nama)) {
-      alert("Nama hanya boleh huruf!");
-      return false;
-    }
-    if (!onlyLetters.test(namaAyah)) {
-      alert("Nama Ayah hanya boleh huruf!");
-      return false;
-    }
-    return true;
-  }
-</script>
 <script>
   // Menghilangkan alert error dan success setelah 4 detik
   window.onload = function () {
