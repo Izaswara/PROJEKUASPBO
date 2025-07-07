@@ -52,56 +52,79 @@
                     <div class="card-header">Tambahkan Mahasiswa Baru</div>
                     <div class="card-body">
                       <form name="my-form" onsubmit="return validform()" action="addNewStudent.jsp" method="post">
+                        <!-- Jenjang Dropdown -->
                         <div class="form-group row">
-                          <label for="full_name" class="col-md-4 col-form-label text-md-right">Jenjang</label>
+                          <label for="jenjang" class="col-md-4 col-form-label text-md-right">Jenjang</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="jenjang">
+                            <select class="form-control" name="jenjang" required>
+                              <option value="">-- Pilih Jenjang --</option>
+                              <option value="S1">S1</option>
+                              <option value="S2">S2</option>
+                              <option value="S3">S3</option>
+                            </select>
                           </div>
                         </div>
-
+                      
+                        <!-- Jurusan Dropdown -->
                         <div class="form-group row">
-                          <label for="email_address" class="col-md-4 col-form-label text-md-right">Jurusan</label>
+                          <label for="jurusan" class="col-md-4 col-form-label text-md-right">Jurusan</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="jurusan">
+                            <select class="form-control" name="jurusan" required>
+                              <option value="">-- Pilih Jurusan --</option>
+                              <option value="Teknik Informatika">Teknik Informatika</option>
+                              <option value="Teknik Mesin">Teknik Mesin</option>
+                              <option value="Teknik Industri">Teknik Industri</option>
+                              <option value="Teknik Sipil">Teknik Sipil</option>
+                              <option value="Teknik Elektro">Teknik Elektro</option>
+                              <option value="Manajemen">Manajemen</option>
+                              <option value="Ekonomi">Ekonomi</option>
+                              <option value="Akuntansi">Akuntansi</option>
+                            </select>
                           </div>
                         </div>
-
+                      
+                        <!-- NIM -->
                         <div class="form-group row">
-                          <label for="user_name" class="col-md-4 col-form-label text-md-right">NIM</label>
+                          <label for="nim" class="col-md-4 col-form-label text-md-right">NIM</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="nim">
+                            <input type="text" class="form-control" name="nim" required>
                           </div>
                         </div>
-
+                      
+                        <!-- Nama -->
                         <div class="form-group row">
-                          <label for="phone_number" class="col-md-4 col-form-label text-md-right">Nama</label>
+                          <label for="nama" class="col-md-4 col-form-label text-md-right">Nama</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nama" required>
                           </div>
                         </div>
-
+                      
+                        <!-- Nama Ayah -->
                         <div class="form-group row">
-                          <label for="present_address" class="col-md-4 col-form-label text-md-right">Nama Ayah</label>
+                          <label for="namaAyah" class="col-md-4 col-form-label text-md-right">Nama Ayah</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="namaAyah">
+                            <input type="text" class="form-control" name="namaAyah" required>
                           </div>
                         </div>
-
+                      
+                        <!-- Jenis Kelamin Dropdown -->
                         <div class="form-group row">
-                          <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Jenis
-                            Kelamin</label>
+                          <label for="gender" class="col-md-4 col-form-label text-md-right">Jenis Kelamin</label>
                           <div class="col-md-6">
-                            <input type="text" class="form-control" name="gender">
+                            <select class="form-control" name="gender" required>
+                              <option value="">-- Pilih Jenis Kelamin --</option>
+                              <option value="Laki-Laki">Laki-Laki</option>
+                              <option value="Perempuan">Perempuan</option>
+                            </select>
                           </div>
                         </div>
-
+                      
+                        <!-- Submit -->
                         <div class="col-md-6 offset-md-4">
-                          <button type="submit" class="btn btn-primary">
-                            Simpan
-                          </button>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
-                    </div>
-                    </form>
+                      </form>
+
                   </div>
                 </div>
               </div>
