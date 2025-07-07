@@ -1,65 +1,39 @@
-<%@page import="project.ConnectionProvider"%>
 <%@page import="java.sql.*"%>
+<%@page import="project.ConnectionProvider"%>
 <%
-request.setCharacterEncoding("UTF-8");
+    String nim = request.getParameter("nim");
+    String nama = request.getParameter("nama");
+    String namaAyah = request.getParameter("namaAyah");
+    String jurusan = request.getParameter("jurusan");
+    String jenjang = request.getParameter("jenjang");
+    String gender = request.getParameter("gender");
 
-String jenjang = request.getParameter("jenjang");
-String jurusan = request.getParameter("jurusan");
-String nim = request.getParameter("nim");
-String nama = request.getParameter("nama");
-String namaAyah = request.getParameter("namaAyah");
-String gender = request.getParameter("gender");
+    try {
+        Connection con = ConnectionProvider.getCon();
 
-// Validasi form kosong
-if (jenjang == null || jurusan == null || nim == null || nama == null || namaAyah == null || gender == null ||
-    jenjang.trim().isEmpty() || jurusan.trim().isEmpty() || nim.trim().isEmpty() ||
-    nama.trim().isEmpty() || namaAyah.trim().isEmpty() || gender.trim().isEmpty()) {
-  response.sendRedirect("adminHome.jsp?error=Semua kolom harus diisi!");
-  return;
-}
+        // Cek apakah NIM sudah ada
+        PreparedStatement check = con.prepareStatement("SELECT * FROM student WHERE nim = ?");
+        check.setString(1, nim);
+        ResultSet rs = check.executeQuery();
 
-// Validasi angka untuk NIM
-if (!nim.matches("\\d+")) {
-  response.sendRedirect("adminHome.jsp?error=NIM harus berupa angka!");
-  return;
-}
+        if (rs.next()) {
+            session.setAttribute("error", "NIM sudah terdaftar!");
+            response.sendRedirect("adminHome.jsp");
+        } else {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO student VALUES (?, ?, ?, ?, ?, ?)");
+            ps.setString(1, jenjang);
+            ps.setString(2, jurusan);
+            ps.setString(3, nim);
+            ps.setString(4, nama);
+            ps.setString(5, namaAyah);
+            ps.setString(6, gender);
+            ps.executeUpdate();
 
-// Validasi huruf untuk nama dan nama ayah
-if (!nama.matches("[a-zA-Z\\s]+")) {
-  response.sendRedirect("adminHome.jsp?error=Nama hanya boleh huruf!");
-  return;
-}
-if (!namaAyah.matches("[a-zA-Z\\s]+")) {
-  response.sendRedirect("adminHome.jsp?error=Nama Ayah hanya boleh huruf!");
-  return;
-}
-
-try {
-  Connection con = ConnectionProvider.getCon();
-
-  // Cek apakah NIM sudah ada
-  PreparedStatement check = con.prepareStatement("SELECT nim FROM student WHERE nim = ?");
-  check.setString(1, nim);
-  ResultSet rs = check.executeQuery();
-  if (rs.next()) {
-    response.sendRedirect("adminHome.jsp?error=NIM sudah terdaftar sebelumnya!");
-    return;
-  }
-
-  // Simpan ke database
-  PreparedStatement ps = con.prepareStatement(
-    "INSERT INTO student VALUES (?, ?, ?, ?, ?, ?)"
-  );
-  ps.setString(1, jenjang);
-  ps.setString(2, jurusan);
-  ps.setString(3, nim);
-  ps.setString(4, nama);
-  ps.setString(5, namaAyah);
-  ps.setString(6, gender);
-  ps.executeUpdate();
-
-  response.sendRedirect("adminHome.jsp");
-} catch (Exception e) {
-  out.println("Error: " + e.getMessage());
-}
+            session.setAttribute("success", "Mahasiswa berhasil ditambahkan!");
+            response.sendRedirect("adminHome.jsp");
+        }
+    } catch(Exception e) {
+        session.setAttribute("error", "Terjadi kesalahan: " + e.getMessage());
+        response.sendRedirect("adminHome.jsp");
+    }
 %>

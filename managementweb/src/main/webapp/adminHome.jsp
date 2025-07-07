@@ -14,7 +14,6 @@
         <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo1')">Hasil Semua Mahasiswa</button>
         <a href="adminLogin.html" class="w3-bar-item w3-button tablink">Logout</a>
       </div>
-
       <div id="London" class="w3-container w3-border city">
         <br>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
@@ -22,23 +21,16 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
-
         <!doctype html>
         <html lang="en">
-
         <head>
           <!-- Required meta tags -->
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
           <!-- Fonts -->
           <link rel="dns-prefetch" href="https://fonts.gstatic.com">
           <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-
-
           <link rel="icon" href="Favicon.png">
-
           <!-- Bootstrap CSS -->
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         </head>
@@ -51,16 +43,24 @@
                   <div class="card">
                     <div class="card-header">Tambahkan Mahasiswa Baru</div>
                     <div class="card-body">
-                      <% if (request.getParameter("error") !=null) { %>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert">
-                          <%= request.getParameter("error") %>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <% } %>
-
-                      <form name="my-form" onsubmit="return validform()" action="addNewStudent.jsp" method="post">
+                    <% String error=(String) session.getAttribute("error"); if (error !=null) { session.removeAttribute("error"); %>
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert">
+                        <%= error %>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <% } %>
+                        <% String success=(String) session.getAttribute("success"); if (success !=null) {
+                          session.removeAttribute("success"); %>
+                          <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+                            <%= success %>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <% } %>
+                      <form name="my-form" onsubmit="return validateForm()" action="addNewStudent.jsp" method="post">
                         <!-- Jenjang Dropdown -->
                         <div class="form-group row">
                           <label for="jenjang" class="col-md-4 col-form-label text-md-right">Jenjang</label>
@@ -124,9 +124,7 @@
                               <option value="Perempuan">Perempuan</option>
                             </select>
                           </div>
-                        </div>
-                    
-                        
+                        </div>  
                             <div class="col-md-6 offset-md-4 mt-3">
                               <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
@@ -136,41 +134,42 @@
     const nim = document.getElementById("nim").value.trim();
     const nama = document.getElementById("nama").value.trim();
     const namaAyah = document.getElementById("namaAyah").value.trim();
-
     const onlyDigits = /^\d+$/;
     const onlyLetters = /^[a-zA-Z\s]+$/;
-
     if (!onlyDigits.test(nim)) {
       alert("NIM harus berupa angka!");
       return false;
     }
-
     if (!onlyLetters.test(nama)) {
       alert("Nama hanya boleh huruf!");
       return false;
     }
-
     if (!onlyLetters.test(namaAyah)) {
       alert("Nama Ayah hanya boleh huruf!");
       return false;
     }
-
     return true;
   }
 </script>
 <script>
-  // Menghilangkan alert setelah 4 detik
+  // Menghilangkan alert error dan success setelah 4 detik
   window.onload = function () {
-    const alertBox = document.getElementById("errorAlert");
-    if (alertBox) {
+    const errorAlert = document.getElementById("errorAlert");
+    const successAlert = document.getElementById("successAlert");
+
+    if (errorAlert) {
       setTimeout(() => {
-        alertBox.classList.remove("show");
-        alertBox.classList.add("fade");
-      }, 4000); // 4 detik
+        errorAlert.style.display = 'none';
+      }, 4000);
+    }
+
+    if (successAlert) {
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 4000);
     }
   };
 </script>
-
                   </div>
                 </div>
               </div>
@@ -186,32 +185,21 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-
     <!doctype html>
     <html lang="en">
-
     <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
       <!-- Fonts -->
       <link rel="dns-prefetch" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-
-
       <link rel="icon" href="Favicon.png">
-
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
     </head>
 
     <body>
-
-
-
       <main class="my-form">
         <div class="cotainer">
           <div class="row justify-content-center">
@@ -300,7 +288,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   </body>
-
   </html>
   </div>
 
@@ -549,7 +536,6 @@
                       </form>
                     </div>
                   </div>
-
                   <% }} catch(Exception e){ } %>
           </tbody>
         </table>
@@ -565,5 +551,4 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
   </body>
-
   </html>
