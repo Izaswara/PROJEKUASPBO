@@ -4,10 +4,7 @@
   <title>STT Wastukancana</title>
 
   <body>
-    <img src="logo.png" align="left" width="100" height="100">
-    <center><img src="LogoStt.png" width="100" height="100">
-      <img src="KetuaStt.png" align="right" width="100" height="100">
-    </center>
+    <center><img src="LogoStt.png" width="100" height="100"></center> <!-- LOGO KAMPUS (NANTI DIRUBAH)-->
     <div class="w3-container">
       <div class="w3-bar w3-black">
         <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'London')">Tambahkan Mahasiswa
@@ -112,9 +109,10 @@
       </div>
       </main>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+
   </body>
   </div>
 
@@ -308,6 +306,7 @@
               <th>Bahasa Inggris</th>
               <th>Kewarganegaraan</th>
               <th>Jaringan Komputer</th>
+              <th>Aksi</th>
             </tr>
           </thead>
         </table>
@@ -344,7 +343,71 @@
                     <td>
                       <%=rs.getString(8) %>
                     </td>
+                    <td>
+                      <!-- Tombol Edit -->
+                      <button class="btn btn-warning btn-sm" data-toggle="modal"
+                        data-target="#editModal<%=rs.getString(1)%>">Edit</button>
+
+                      <!-- Tombol Delete -->
+                      <button class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal<%=rs.getString(1)%>">Delete</button>
+                    </td>
                   </tr>
+                  <!-- Modal Edit -->
+                  <div class="modal fade" id="editModal<%=rs.getString(1)%>" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <form action="updateResult.jsp" method="post">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Edit Nilai Mahasiswa</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                              <span>&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <input type="hidden" name="nim" value="<%=rs.getString(1)%>">
+                            <% for(int i=2; i <=8; i++) { %>
+                              <div class="form-group">
+                                <label>Nilai S<%=i - 1%></label>
+                                <input type="text" class="form-control" name="s<%=i - 1%>" value="<%=rs.getString(i)%>">
+                              </div>
+                              <% } %>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  
+                  <!-- Modal Delete -->
+                  <div class="modal fade" id="deleteModal<%=rs.getString(1)%>" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <form action="deleteResult.jsp" method="post">
+                        <input type="hidden" name="nim" value="<%=rs.getString(1)%>">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Hapus Data</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                              <span>&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Apakah kamu yakin ingin menghapus hasil dari NIM <strong>
+                                <%=rs.getString(1)%>
+                              </strong>?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
                   <% }} catch(Exception e){ } %>
           </tbody>
         </table>
@@ -355,6 +418,10 @@
   <center>
     <h5>Kelompok-1 PBO 2025</h5>
   </center>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
   </body>
 
   </html>
