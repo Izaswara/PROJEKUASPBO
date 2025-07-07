@@ -12,7 +12,7 @@ String s5 = request.getParameter("s5");
 String s6 = request.getParameter("s6");
 String s7 = request.getParameter("s7");
 
-// Validasi kolom kosong
+// Validasi kosong
 if (nim == null || nim.trim().isEmpty() ||
     s1 == null || s1.trim().isEmpty() ||
     s2 == null || s2.trim().isEmpty() ||
@@ -22,12 +22,39 @@ if (nim == null || nim.trim().isEmpty() ||
     s6 == null || s6.trim().isEmpty() ||
     s7 == null || s7.trim().isEmpty()) {
     
-    out.println("<script>alert('Semua kolom nilai harus diisi.'); location='adminHome.jsp';</script>");
+    out.println("<script>alert('Semua kolom harus diisi.'); location='adminHome.jsp';</script>");
+    return;
+}
+
+// Validasi numerik
+try {
+    Integer.parseInt(nim);
+    Integer.parseInt(s1);
+    Integer.parseInt(s2);
+    Integer.parseInt(s3);
+    Integer.parseInt(s4);
+    Integer.parseInt(s5);
+    Integer.parseInt(s6);
+    Integer.parseInt(s7);
+} catch (NumberFormatException e) {
+    out.println("<script>alert('NIM dan semua nilai harus berupa angka.'); location='adminHome.jsp';</script>");
     return;
 }
 
 try {
     Connection con = ConnectionProvider.getCon();
+
+    // Cek apakah NIM sudah ada di tabel
+    PreparedStatement check = con.prepareStatement("SELECT nim FROM result WHERE nim = ?");
+    check.setString(1, nim);
+    ResultSet rs = check.executeQuery();
+    
+    if (rs.next()) {
+        out.println("<script>alert('Data dengan NIM ini sudah ada.'); location='adminHome.jsp';</script>");
+        return;
+    }
+
+    // Jika belum ada, insert data
     PreparedStatement ps = con.prepareStatement(
         "INSERT INTO result VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     );
