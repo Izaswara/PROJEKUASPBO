@@ -1,17 +1,93 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>STT Wastukancana</title>
+		<title>STT. Wastukancana Purwakarta</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="Sekolah Tinggi Teknologi Wastukancana.png" type="image/png" />
+
+
+		<style>
+			#three {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 50px;
+			text-align: center;
+			}
+
+			.image.round img {
+			width: 150px;
+			height: auto;
+			border-radius: 50%;
+			}
+
+			#three .profile-campus {
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				gap: 50px;
+				padding: 40px;
+				flex-wrap: wrap;
+				text-align: center;
+			}
+
+			.profile-box {
+				max-width: 400px;
+			}
+
+			.profile-box .image.round img {
+				width: 150px;
+				height: auto;
+				border-radius: 50%;
+			}
+
+			.profile-box h3 {
+				margin-top: 15px;
+				font-size: 18px;
+				font-weight: 600;
+			}
+
+			.profile-box .position {
+				font-size: 13px;
+				color: gray;
+				margin-top: -8px;
+			}
+
+			.profile-box .desc {
+				font-size: 14px;
+				color: #666;
+				line-height: 1.6;
+				margin-top: 10px;
+			}
+
+			.horizontal-layout {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 60px;
+			}
+
+			@media screen and (max-width: 768px) {
+				.horizontal-layout {
+					flex-direction: column;
+				}
+			}
+
+
+		</style>
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo"><strong> STT Wastukancana</strong></a>
+					<a href="index.html" class="logo">
+						<img src="Sekolah Tinggi Teknologi Wastukancana.png" alt="Logo STT Wastukancana" style="height: 85px;">
+					</a>
 					<nav id="nav">
 						<a href="index.html">Home</a>
 						<a href="DgiiOneView.html">Mahasiswa</a>
@@ -52,30 +128,24 @@
 
 
 		<!-- Three -->
-			<section id="three" class="wrapper align-center">
-				<div class="inner">
-					<div class="flex flex-2">
-						<article>
+			<section id="three" class="wrapper align-center" style="display: flex;">
+				<div class="profile-campus horizontal-layout">
+
+					<div class="profile-box">
 							<div class="image round">
 								<img src="KetuaStt.png" alt="Pic 01" />
 							</div>
-							<header>
-								<h3>Ir. Apang Djafar Shiddique,S.T.,M.T.,IPM. ASEAN</h3>
-							</header>
-							<p>A.P.J. Abdul Kalam, in full Avul Pakir Jainulabdeen Abdul Kalam, (born October 15, 1931, Rameswaram, India—died July 27, 2015, Shillong), Indian scientist and politician who played a leading role in the development of India's missile and nuclear weapons programs. He was president of India from 2002 to 2007.</p>
+							<h3>Ir. Apang Djafar Shiddique,S.T.,M.T.,IPM. ASEAN</h3>
+							<p class="position">(Ketua STT. Wastukancana Purwakarta)</p>
 							
-						</article>
-						<article>
+					<div class="profile-box">
 							<div class="image round">
-								<img src="LogoStt.png" alt="Pic 02" />
+								<img src="Sekolah Tinggi Teknologi Wastukancana.png" alt="Pic 02" />
 							</div>
-							<header>
-								<h3>Tentang Kampus ini</h3>
-							</header>
-							<p>STT. (Sekolah Tinggi Teknologi) Wastukancana Purwakarta telah membuka 6 Jurusan untuk dua jenjang program, yaitu (D3) dan (S1) yang usianya telah memasuki tahun ke-sepuluh sejak dibuka pada tahun akademik 2000/2001; jumlah mahasiswa saat ini tercatat sebanyak 830 mahasiswa aktif.</p>
-							
-						</article>
+							<h3>Tentang Kampus</h3>
+							<p class="desc">STT. (Sekolah Tinggi Teknologi) Wastukancana Purwakarta telah membuka 6 Jurusan untuk dua jenjang program, yaitu (D3) dan (S1) yang usianya telah memasuki tahun ke-sepuluh sejak dibuka pada tahun akademik 2000/2001; jumlah mahasiswa saat ini tercatat sebanyak 830 mahasiswa aktif.</p>
 					</div>
+
 				</div>
 			</section>
 
