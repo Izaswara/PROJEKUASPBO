@@ -1,24 +1,109 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">   
-  <link rel="stylesheet" type="text/css" href="style.css">  
-  <style>
-  .login-box{
-    height: 380px;
-}</style>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #c2f0f7, #d6f5e3);
+        }
+
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-box img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+        }
+
+        .login-box h1 {
+            margin-bottom: 25px;
+            color: #222;
+            font-size: 24px;
+        }
+
+        .login-box p {
+            text-align: left;
+            margin: 0 0 5px 0;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            background: transparent;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .login-box input[type="text"]:focus,
+        .login-box input[type="password"]:focus {
+            border-bottom-color: #007bff;
+            outline: none;
+        }
+
+        .login-box input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-box input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .login-box .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-box .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" action="adminLoginAction.jsp">
     <div class="login-box">
-    <img src="user.png" class="avatar">
+        <img src="LogoStt.png" alt="Logo STT">
         <h1>Admin Login</h1>
+        <form method="post" action="adminLoginAction.jsp">
             <p>Username</p>
-            <input type="text" name="username" placeholder="Enter Username" required="required">
+            <input type="text" name="username" placeholder="Enter Username" required>
             <p>Password</p>
-            <input type="password" name="password" placeholder="Enter Password" required="required">
-            <input type="submit" name="submit" value="Login">
-            </form>
-             <center><h1><a href="index.html">Back</a></h1></center>
-        </div>   
-    </body>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <a class="back-link" href="index.html">Back</a>
+    </div>
+</body>
 </html>
